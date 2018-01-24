@@ -1,0 +1,34 @@
+# HTTP Server
+server:
+   port: 8001
+
+# Logging
+logging:
+   file: logs/${spring.application.name}.log
+   level:
+      org.springframework.cloud: 'DEBUG'
+      es.microservices: 'INFO'
+
+# Eureka Client
+eureka:
+   client:
+      registerWithEureka: true
+      fetchRegistry: true
+      serviceUrl:
+         defaultZone: http://localhost:1001/eureka/
+#   instance:
+#      initialStatus: UNKNOWN
+
+# Clock Service properties
+clock:
+   time:
+      service:
+         url: clock/time
+
+# Ribbon configuration
+clock-service:
+  ribbon:
+    eureka:
+      enabled: true
+#    listOfServers: localhost:9001,localhost:9002
+      ServerListRefreshInterval: 15000
